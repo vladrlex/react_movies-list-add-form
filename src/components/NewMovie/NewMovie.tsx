@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const NewMovie: React.FC<Props> = ({ onAdd }) => {
-  const [count, setCount] = useState(0);
+  const [formKey, setFormKey] = useState(0);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
@@ -25,18 +25,13 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
   };
 
   const reset = () => {
-    setCount(c => c + 1);
-    setDescription('');
-    setImageUrl('');
-    setImdbId('');
-    setImdbUrl('');
-    setTitle('');
+    setFormKey(prevKey => prevKey + 1);
   };
 
   return (
     <form
       className="NewMovie"
-      key={count}
+      key={formKey}
       onSubmit={event => {
         event.preventDefault();
         addMovie();
